@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>调用摄像头识别二维码</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/flexible.js"></script>
+
+</head>
+
+<body>
+  <div id="mumuQrcode"></div>
+
+  <script src="js/base.js"></script>
+  <script>
+    new MumuQrcode({}, (code) => {
+      console.log(code,'这是扫码识别出来的东西')
+      alert(code)
+    })
+  </script>
+
+</body>
+
+</html>

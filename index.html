@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <div class="create" style="text-align: center;">
+    <a href="./one.html" style="font-size: 18px; text-decoration: none;color: #000;">扫一扫</a>
+    <button class="sweep" id="sweep">
+      从相册选择
+        <input type="file" id="file" onchange="upload()"  class="ipt" style="display: none;"/>
+    </button>
+    <canvas class="canvas" id="canvas" style="display: none;"></canvas>
+</div>
+</head>
+   <!-- 二维码识别 -->
+   <script src="./js/jimp.js"></script>
+   <script src="./js/jsqr.min.js"></script>
+   <script src="./js/base.js"></script>
+<script>
+  var result = ''   //定义初始变量  保存相册扫码后的数据
+  const QrCode = new QrCodeRecognition({
+      sweepId: '#canvas',
+      uploadId: '#file',
+      error: function (err) {
+          // 识别错误反馈
+          result.value = err;
+      },
+      seuccess: function (res) {
+          // 识别成功反馈
+          result.value = res.data;
+          console.log(res.data, '这是相册扫码识别成功的内容');
+      }
+  });
+  let uploadbutton = document.getElementById("sweep");
+    let uploadInput = document.getElementById("file");
+    uploadbutton.onclick = function () {
+      uploadInput.click();
+
+    };
+  // 从相册选择
+  function upload() {
+      QrCode.upload();
+  };
+</script>
+  <script src="./js/flexible.js"></script>
+
+<style>
+  .sweep {
+    width: 90px;
+    height: 30px;
+    background-color: aqua;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
+
+
+
+</html>
